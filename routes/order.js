@@ -5,8 +5,8 @@ const router = express.Router();
 const Order = require('../models/Order');
 const Product = require('../models/Product');
 const User = require('../models/User');
-
 const authMiddleware = require('../middleware/auth');
+
 router.post("/", authMiddleware, async (req, res) => {
   try {
     const userId = req.userId; 
@@ -158,6 +158,43 @@ router.put("/return/:id", authMiddleware, async (req, res) => {
       error: err.message,
       stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
     });
+  }
+});
+
+router.get("/all", authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findById(req.userId);
+    if (!user || user.role !== "admin") {
+      return res.status(403).json({ message: "Access denied" });
+    }
+
+    const orders = await Order.find()
+      .sort({ createdAt: -1 })
+      .populate("user", "name email")
+      .populate("items.product", "title price");
+    res.json(orders);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+router.put("/:orderId/status", authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findById(req.userId);
+    if (!user || user.role !== "admin") {
+      return res.status(403).json({ message: "Access denied" });
+    }
+
+    const { status } = req.body;
+    const order = await Order.findById(req.params.orderId);
+    if (!order) return res.status(404).json({ message: "Order not found" });
+
+    order.status = status;
+    await order.save();
+
+    res.json({ message: "Order status updated", order });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 });
 
