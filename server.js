@@ -12,10 +12,8 @@ const orderRoutes = require("./routes/order");
 const wishlistRoutes = require("./routes/wishlist");
 
 const app = express();
-app.use(cors({
-  origin: "https://full-stack-e-commerce-website-iota.vercel.app",
-  credentials: true
-}));
+app.use(express.json());
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
@@ -31,5 +29,4 @@ mongoose.connect(process.env.MONGO_URI)
       console.log(`🚀 Server running on port ${process.env.PORT || 5000}`)
     );
   })
-
   .catch(err => console.error('MongoDB connection failed:', err));
