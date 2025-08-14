@@ -84,26 +84,7 @@ It offers **seamless product browsing, shopping cart, wishlist, secure checkout,
 ---
 
 ## 📂 Project Structure
-ecommerce-website/
-│
-├── backend/
-│ ├── controllers/ # Controller files - handle API logic separately from routes
-│ ├── models/ # Mongoose models (User, Product, Order, etc.)
-│ ├── routes/ # API routes (auth, products, cart, wishlist, admin, orders)
-│ ├── middleware/ # Authentication & role-based access control
-│ ├── utils/ # Helper functions (e.g., OTP generation)
-│ ├── server.js # Entry point
-│
-├── frontend/
-│ ├── src/
-│ │ ├── components/ # Reusable UI components
-│ │ ├── pages/ # Pages (Home, Shop, Cart, Wishlist, Account, Admin, Orders)
-│ │ ├── context/ # Cart & Wishlist Contexts
-│ │ ├── App.js
-│ │ ├── index.js
-│
-├── package.json
-├── README.md
+<img width="799" height="677" alt="image" src="https://github.com/user-attachments/assets/06a9f49f-0aef-49ac-96ca-9be5b71eadce" />
 
 ---
 
