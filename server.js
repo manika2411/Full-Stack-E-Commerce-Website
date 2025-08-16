@@ -44,7 +44,7 @@ app.use("/api/orders", orderRoutes);
 app.use("/api/wishlist", wishlistRoutes);
 
 // MongoDB Connection & Start Server
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(mongodb+srv://<manika>:<2411>@cluster0.abcde.mongodb.net/ecommerce)
   .then(() => {
     const PORT = process.env.PORT || 5000;
     app.listen(PORT, () =>
@@ -52,3 +52,4 @@ mongoose.connect(process.env.MONGO_URI)
     );
   })
   .catch(err => console.error('❌ MongoDB connection failed:', err));
+
