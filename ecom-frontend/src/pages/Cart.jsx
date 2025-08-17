@@ -13,6 +13,12 @@ export default function Cart() {
   const [placing, setPlacing] = useState(false);
 
   useEffect(() => {
+    if (!token) {
+        navigate("/login", { 
+          state: { message: "Please login to view your cart" }
+        });
+        return;
+      }
     fetchCart();
   }, []);
 
@@ -203,3 +209,4 @@ export default function Cart() {
     </>
   );
 }
+
