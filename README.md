@@ -80,3 +80,9 @@ It offers **seamless product browsing, shopping cart, wishlist, secure checkout,
 
 **Database**
 - MongoDB Atlas (Cloud-hosted)
+
+---
+
+## 📂 Project Structure
+
+<img width="984" height="699" alt="image" src="https://github.com/user-attachments/assets/008b1bbe-ae0d-42e8-ba35-4fc1be85f882" />
